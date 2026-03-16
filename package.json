@@ -1,0 +1,20 @@
+{
+  "name": "redvote",
+  "version": "1.0.0",
+  "description": "A simple on-chain voting dApp using Ganache and MetaMask.",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node deploy.js",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "ganache": "^7.9.2",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^10.4.0",
+    "solc": "^0.4.17",
+    "web3": "^4.9.0"
+  }
+}
