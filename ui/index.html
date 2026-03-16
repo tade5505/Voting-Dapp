@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RedVote - Onchain Voting</title>
+  <title>RedVote — On-Chain Voting</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="header">
     <h1>RedVote</h1>
-    <p class="tagline">A simple on-chain voting platform (one wallet, one vote)</p>
+    <p class="tagline">On-chain voting, secured by your wallet</p>
   </header>
 
   <main class="container">
     <section class="panel">
+      <!-- Connection Row -->
       <div class="row">
         <button id="connectButton" class="primary">Connect Wallet</button>
         <div id="account" class="account">Not connected</div>
       </div>
 
-      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <!-- Status Message -->
+      <div id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></div>
 
-      <div id="candidates" class="candidates"></div>
+      <!-- Candidates Grid -->
+      <div id="candidates" class="candidates" role="list"></div>
 
-      <div id="footer" class="footer">
-        <p>
-          To use this app:
-          <ol>
-            <li>Start Ganache on <code>http://localhost:8545</code></li>
-            <li>Run <code>npm run deploy</code> to deploy the voting contract</li>
-            <li>Open this page in a browser that has MetaMask connected to localhost</li>
-          </ol>
-        </p>
+      <!-- Footer / Instructions -->
+      <div class="footer">
+        <strong>Setup</strong>
+        <ol>
+          <li>Ensure Ganache is running on <code>http://127.0.0.1:7545</code></li>
+          <li>In terminal: <code>npm run deploy</code> then <code>npm run start</code></li>
+          <li>Connect MetaMask to <code>127.0.0.1:7545</code> and vote</li>
+        </ol>
       </div>
     </section>
   </main>

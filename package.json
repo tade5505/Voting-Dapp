@@ -1,11 +1,13 @@
 {
   "name": "redvote",
   "version": "1.0.0",
-  "description": "A simple on-chain voting dApp using Ganache and MetaMask.",
+  "description": "A simple on-chain voting Dapp using Ganache and MetaMask.",
   "main": "index.js",
   "scripts": {
     "deploy": "node deploy.js",
-    "test": "mocha"
+    "test": "mocha",
+    "serve": "http-server ui -c-1 -p 8080",
+    "start": "start http://127.0.0.1:8080/index.html && npm run serve"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +18,8 @@
     "mocha": "^10.4.0",
     "solc": "^0.4.17",
     "web3": "^4.9.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }

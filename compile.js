@@ -7,6 +7,5 @@ const source = fs.readFileSync(contractPath, 'utf8');
 
 const output = solc.compile(source, 1);
 
-console.log('Full compile output:', output);
-
+// Export the first compiled contract (Voting) for deployment / tests.
 module.exports = output.contracts[Object.keys(output.contracts)[0]];

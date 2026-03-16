@@ -5,6 +5,8 @@ pragma experimental ABIEncoderV2;
 // The contract stores candidates and their vote counts.
 
 contract Voting {
+    address public owner;
+
     struct Candidate {
         string name;
         uint voteCount;
@@ -12,10 +14,18 @@ contract Voting {
 
     Candidate[] public candidates;
     mapping(address => bool) public hasVoted;
+    mapping(address => uint) public voteIndex;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner");
+        _;
+    }
 
     // Initialize with a fixed set of candidates.
-    // In a real-world deployment, candidate names could be set by a contract owner.
+    // Owner can add new candidates later.
     constructor(string[] memory candidateNames) public {
+        owner = msg.sender;
+
         for (uint i = 0; i < candidateNames.length; i++) {
             candidates.push(Candidate({
                 name: candidateNames[i],
@@ -24,11 +34,19 @@ contract Voting {
         }
     }
 
+    function addCandidate(string memory name) public onlyOwner {
+        candidates.push(Candidate({
+            name: name,
+            voteCount: 0
+        }));
+    }
+
     function vote(uint candidateIndex) public {
         require(!hasVoted[msg.sender], "Already voted");
         require(candidateIndex < candidates.length, "Candidate does not exist");
 
         hasVoted[msg.sender] = true;
+        voteIndex[msg.sender] = candidateIndex;
         candidates[candidateIndex].voteCount += 1;
     }
 
